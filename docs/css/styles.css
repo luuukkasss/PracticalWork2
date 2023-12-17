@@ -2996,3 +2996,60 @@ main {
 .partner a:hover {
   text-decoration: underline;
 }
+/* About CSS*/
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+header {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+main {
+  padding: 20px;
+}
+.about-me {
+  margin-bottom: 20px;
+}
+.about-me h2 {
+  margin-top: 0;
+}
+.about-me p {
+  line-height: 1.6;
+}
+.profile-images {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  border-bottom: 1px solid gray;
+}
+.profile-images img {
+  width: 250px;
+  height: auto;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.social-links {
+  margin-top: 10px;
+}
+.social-links a {
+  display: inline-block;
+  margin-right: 10px;
+  width: 45px;
+  margin :10px;
+}
+body {
+    font-family: Arial, sans-serif;
+}
+
+.curriculum {
+  padding-bottom: 7px;
+  padding-top: 15px;
+  border-bottom: 1px solid gray;
+  border-top: 1px solid gray;
+}
