@@ -2,61 +2,91 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Topic: Artificial Intelligence</title>
-  <style>
-    /* Add your CSS styles here */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #333;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    main {
-      padding: 20px;
-    }
-    .topic {
-      margin-bottom: 20px;
-    }
-    .topic h2 {
-      margin-top: 0;
-    }
-    .topic p {
-      line-height: 1.6;
-    }
-  </style>
+  <title>Large Lenguage Models</title>
+  <link href="../css/styles.css" rel="stylesheet">
+  <link href="../css/fonts.css" rel="stylesheet">
+  
 </head>
 <body>
 
 <header>
-  <h1>Topic: Artificial Intelligence</h1>
+  <h1>Large Lenguage Models</h1>
 </header>
 
 <main>
   <section id="topic">
     <div class="topic">
-      <h2>Introduction to Artificial Intelligence</h2>
+      <h2>Introduction</h2>
       <p>
-        Artificial Intelligence (AI) is the simulation of human intelligence processes by machines, especially computer systems. These processes include learning, reasoning, problem-solving, perception, and language understanding.
+        LLMs have gained massive popularity for their capabilities, but it is ought to mention that such capabilities are built on the foundations of cutting-edge technologies employed during their design, development, and maintenance stages. These technologies include large scale data-preprocessing, a transformer architecture that makes use of tokenization, token-embedding and self-attention mechanisms, pre-training and fine-tuning, multiple training techniques and many others. 
+
+It is the objective of this section to explore these technologies with the purpose of comprehending their importance and functionality within Large Language Models. 
+
+<h2>Data training, filtering and pre-processing</h2>
+LLMs are trained on a large amount of data, often referred to as Corpus. As the models capabilities are reliant on this Corpus, it must be in line with a series of standards: the data must be diverse, it must originate from different sources to avoid biased information and it must be of a certain quality, especially due to typos, misspellings, use of special characters, etc. 
+
+To ensure data quality, it is to be filtered in pursuance of the elimination of unusable, biased or inapt data of any kind. There are two main approaches for data filtering: classifier-based approaches, which tend to be more rigid, and heuristic-based approaches, which employ well-designed rules and are more flexible. The techniques employed by such classifiers, although complex, allow for a better filtering of the data. 
+
+Additionally, once filtered, the data embarks on de-duplication and privacy redaction processes, to remove duplicate data and personal identifiers respectively. Often, text normalization (which means converting text to a consistent format) is also applied. 
+
+A crucial step in pre-processing is tokenization. It aims to break down a text into smaller, indivisible units named tokens. Tokens may be characters, subwords, symbols, words or entire sentences. There are many types of tokenization techniques, some of the most common ones include: 
+
+BPE: this algorithm considers the Corpus as a series of characters, then it will merge the most frequent pairs of tokens in each iteration and will only stop once it has met some predefined criteria. Once finished, it will update the vocabulary. Such a technique is used in GPT-based models. Some advantages include adaptability, handling rare and Out Of Vocabulary (OOV) words and a smooth transition from characters to words. 
+
+Many models will use special tokens to refer to the start and end of a sentence or paragraph, further expanding their understanding of context. Others, like GPT3, use special indicators for conversations' questions and answers, enabling them to receive prompts and answer accordingly. In some instances, connector words or other structures with little to no semantic meaning may be eliminated to save on computational resources. 
       </p>
     </div>
     <div class="topic">
-      <h2>Applications of AI</h2>
+      <h2>Transformers</h2>
       <p>
-        AI is used in various fields such as healthcare, finance, gaming, robotics, natural language processing, and more. It powers chatbots, recommendation systems, autonomous vehicles, and assists in medical diagnoses.
+        Transformers are the most common architecture of LLMs. Transformers are neural networks whose operations are based on selecting data and studying relationships with other data, words, or sentences, so it can improve the understanding and generation of text in an LLM. Transformers uses many operations, such as word embedding or attention layers. It all started with the release of a paper called “Attention is all you need”, published by Vaswani. It stablished a new structure for LLMs, transformers, and explained how the attention works. It used the self-attention mechanism of RNNs and CNNs, but without these ones, the training time would reduce. The use self-attention mechanisms resulted in several benefits. 
+
+        Some important features of transformers are that they can work with distant information, and they don’t use recurrent connections like RNNs, which means that when working with large amounts of data, they are more efficient. To obtain results, transformers assign input vectors to output vectors with similar length. Inside of transformers, there are several blocks, containing networks with some technologies, self-attention layers being one of the most important ones. That is because they can use information from an enormous group of data without using recurrent connections. 
+        
+        The performance of transformers is as follows: First, the input (like a word), also called token, is transformed into a vector using Word2Vec. While going through layers of the network, the token is more accurate thanks to contextual information and relationships with other words. After learning patterns, the output goes through layers and finally predicts the next token of the input and produces an output after repeating this process several times. 
+        
+        Word2Vec is a word embedding technique and is the process which allows Neural Networks to establish relationships between words, and, in consequence, give the output as a word. First, the word is converted into a vector, based on the features of the word, because of that, the vector is called “feature vector”. Those relationships can be either semantic or syntactic. Then, by training the neural network, mathematical operation can be made in those vectors. With the resultant vector in a vector space, the coordinates of the vector allow to know what words are, for example, synonyms if the coordinates are similar, or antonyms if they are the opposite. 
+      
+        There are important parameters for the operations made in the Neural Network: weights and biases. Weight is a parameter that establishes the strength between neurons and can be modified in the training process until the loss is minimal. The bigger the weight, the stronger the relationship between the neurons. The bias is a constant value, that has its 
+        
+         
+        
+        own weight. It is a value that adds to the input so if the input multiplied by the weight is 0, the neuron keeps working.  
+        
+        <h2>Self-Attention Layers</h2>
+        Now, focusing on self-attention layers, the tokens are converted into matrices that are given one of the three roles, MQ (Matrix Query), MK (Matrix Key) or MV (Matrix Value), and by operating these three types of matrices we get a new matrix called “alignment tensor”. With other techniques such as softmax (a function that transforms every value from -∞ to +∞ to a value from 0 to 1) we normalize the results, although there are some values in the matrix that are really big negative numbers, and after the softmax, they are really close to 0. That is because that values equals to the part of the sequence that goes after the part of the sequence that we have given the attention to, so the transformer cannot focus further than that point. 
+        
+        In summary, a transformer model works by first embedding all the tokens (transforming them into vectors), then comparing and weighing the relevance of each token in relation to others (this is called a self-attention mechanism). The next step is to stack a series of self-attention layers as well as some linear and/or non-linear feedforward layers, along with some normalization to enable mathematical comparisons. 
+        
+        
       </p>
     </div>
     <div class="topic">
-      <h2>Future of AI</h2>
-      <p>
-        The future of AI holds tremendous potential and challenges. Advancements in AI technologies continue to shape industries and society, raising ethical, legal, and social implications that require careful consideration.
-      </p>
+      <h2>The ethical part</h2>
+      <p>Large Language Models (LLMs) have the potential to be powerful tools, but they also pose ethical and technical challenges that must be carefully addressed as they are integrated into various applications. Their use should consider both advantages and disadvantages to make informed decisions. 
+
+        The advantages of Large Language Models lie in their ability to generate content efficiently. For instance, automated text generation can make us save time and resources, which is particularly valuable in work environments where production is the main part of operations. In this way, LLMs are so useful in situations where large volumes of data and word processing tasks need to be managed efficiently. To conclude, these advantages translate into increased productivity and efficiency in a variety of applications, which can be beneficial at both the individual and enterprise level. 
+        
+        <br><ul><li>Text generation: LLMs can generate high quality content in natural language, such as articles, answers to questions, creative texts, among others. </li>
+        
+        <li>Task automation: they can be used to automate tasks that involve text processing, such as customer service, document summarization, automatic translation and so on. </li>
+        
+        <li>Efficiency: This technology can accelerate information creation and decision making by providing accurate and relevant information in a short time. </li>
+        
+        <li>Scalability: it can be scaled to manage large amounts of data and tasks, which is useful for companies and organizations that handle significant volumes of text.  </li>
+        </ul>
+        The disadvantages of Large Language Models are based on legitimate concerns, such as bias in the generated answers, which may result in biased or discriminatory content, raising ethical issues by contributing to misinformation and harmful discourses. On the other hand, improper use of content may violate privacy, which is a clear disadvantage in terms of data protection. What’s more, in terms of human development an over-reliance on technology can result in a loss of human skills and autonomy.  <br>
+        <br><ul>
+        <li>Ethical issues: The use of LLM raises ethical questions, especially in terms of creating misleading or harmful content, such as misinformation.  </li>
+        
+        <li>Privacy concerns: there is no type of control, it can pick information of everything that is on the Internet, in this way, generating text automatically from user data. </li>
+        
+        <li>Computational requirements: Training and using LLM on a large scale may require significant computational resources, which can be costly and unaffordable for everyone. </li>
+        
+        <li>Technology dependency: It can be used as a tool, but misuse can lead to the loss of human skills in content generation and decision making, it can also replace human labor.</li>
+      </ul> </p>
     </div>
-    <!-- Add more topic sections as needed -->
+    
   </section>
 </main>
 
